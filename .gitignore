@@ -1,2 +1,4 @@
-env
-README.md
+virtual
+.env
+db.sqlite3
+__pycache__
