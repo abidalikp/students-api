@@ -32,7 +32,10 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["150.129.102.240"]
+ALLOWED_HOSTS = [
+    host.strip()
+    for host in env('ALLOWED_HOSTS').split(',')
+]
 
 
 # Application definition
