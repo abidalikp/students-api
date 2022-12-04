@@ -36,7 +36,6 @@ ALLOWED_HOSTS = [
     host.strip()
     for host in env('ALLOWED_HOSTS').split(',')
 ]
-print(ALLOWED_HOSTS)
 
 
 # Application definition

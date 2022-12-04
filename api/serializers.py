@@ -4,13 +4,6 @@ from api import models
 
 # Create your serializers here
 
-# Course Serializer
-class CourseSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = models.Course
-        fields = '__all__'
-
 # Major Serializer
 class MajorSerializer(serializers.ModelSerializer):
 
@@ -18,9 +11,24 @@ class MajorSerializer(serializers.ModelSerializer):
         model = models.Major
         fields = '__all__'
 
+# Course Serializer
+class CourseSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.Course
+        fields = '__all__'
+
+    def to_representation(self, instance):
+        self.fields['major'] = MajorSerializer()
+        return super().to_representation(instance)
+
 # Student Serializer
 class StudentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Student
         fields = '__all__'
+
+    def to_representation(self, instance):
+        self.fields['major'] = MajorSerializer()
+        return super().to_representation(instance)
