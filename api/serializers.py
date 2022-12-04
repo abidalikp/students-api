@@ -30,5 +30,17 @@ class StudentSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def to_representation(self, instance):
-        self.fields['major'] = MajorSerializer()
+        self.fields['major'] = MajorSerializer(read_only=True)
+        return super().to_representation(instance)
+
+# Student Course Serializer
+class StudentCourseSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.StudentCourse
+        fields = '__all__'
+
+    def to_representation(self, instance):
+        self.fields['student'] = StudentSerializer(read_only=True)
+        self.fields['course'] = CourseSerializer(read_only=True)
         return super().to_representation(instance)
