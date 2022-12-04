@@ -6,19 +6,19 @@ from django.db import models
 # Majors
 class Major(models.Model):
     
-    major = models.CharField(max_length = 50, unique=True)
+    name = models.CharField(max_length = 50, unique=True)
 
     def __str__(self):
-        return self.major
+        return self.name
 
 # Courses
 class Course(models.Model):
 
-    course = models.CharField(max_length = 50, unique=True)
+    name = models.CharField(max_length = 50, unique=True)
     major = models.ForeignKey(Major, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.course
+        return self.name
 
 # Students
 class Student(models.Model):
@@ -44,7 +44,7 @@ class Student(models.Model):
 class StudentCourse(models.Model):
 
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='courses')
     mark = models.FloatField(blank=True, null=True, default=None)
 
     def __str__(self):

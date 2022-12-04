@@ -1,10 +1,13 @@
 from rest_framework.response import Response
 from rest_framework.generics import (
     ListCreateAPIView,
-    RetrieveUpdateDestroyAPIView
+    RetrieveUpdateDestroyAPIView,
+    ListAPIView
 )
-
 from api import models, serializers
+
+import logging
+logger = logging.getLogger()
 
 # Create your views here.
 
@@ -16,7 +19,16 @@ class StudentAPI(ListCreateAPIView):
 class StudentDetailAPI(RetrieveUpdateDestroyAPIView):
     queryset = models.Student.objects.all()
     serializer_class = serializers.StudentSerializer
-    
+
+
+# Student Courses
+class StudentCoursesAPI(ListAPIView):
+    serializer_class = serializers.CourseSerializer
+
+    def get_queryset(self):
+        pk = self.kwargs['pk']
+        return models.Course.objects.filter(courses__student=pk)
+
 # Majors
 class MajorAPI(ListCreateAPIView):
     queryset = models.Major.objects.all()
@@ -35,7 +47,7 @@ class CourseDetailAPI(RetrieveUpdateDestroyAPIView):
     queryset = models.Course.objects.all()
     serializer_class = serializers.CourseSerializer
 
-# Student Courses
+# Student Course
 class StudentCourseAPI(ListCreateAPIView):
     queryset = models.StudentCourse.objects.all()
     serializer_class = serializers.StudentCourseSerializer
