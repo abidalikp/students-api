@@ -2,11 +2,11 @@
 
 ### List all Students
 ```http
-GET /api/countries
+GET /api/students
 ```
 ### Create a new student
 ```http
-POST /api/countries
+POST /api/stduents
 ```
 with json body
 ```json
@@ -20,11 +20,11 @@ with json body
 ```
 ### List student details
 ```http
-GET /api/countries/1
+GET /api/students/1
 ```
 ### Update student detail
 ```http
-PATCH /api/countries/1
+PATCH /api/students/1
 ```
 with json body
 ```json
@@ -34,14 +34,14 @@ with json body
 ```
 ### Delete student
 ```http
-DELETE /api/countries/1
+DELETE /api/students/1
 ```
 
 # Run Locally
 
 1. Clone this repository:
 ```
-git clone https://github.com/abidalikp/countries-api.git
+git clone https://github.com/abidalikp/students-api.git
 ```
 
 2. Create a virtual environment:
