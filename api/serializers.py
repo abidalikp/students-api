@@ -4,15 +4,22 @@ from api import models
 
 # Create your serializers here
 
-class InstituteSerializer(serializers.ModelSerializer):
+# Course Serializer
+class CourseSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = models.Institute
+        model = models.Course
         fields = '__all__'
 
-class StudentSerializer(serializers.ModelSerializer):
+# Major Serializer
+class MajorSerializer(serializers.ModelSerializer):
 
-    institute = InstituteSerializer(read_only = True)
+    class Meta:
+        model = models.Major
+        fields = '__all__'
+
+# Student Serializer
+class StudentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Student

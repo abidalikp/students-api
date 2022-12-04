@@ -6,5 +6,8 @@ from api import models
 
 admin.site.register([
     models.Student,
-    models.Institute,
+    models.StudentCourse,
+    models.Course,
+    models.Major,
+    models.MajorCourse,
 ])
