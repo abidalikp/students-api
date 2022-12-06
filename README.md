@@ -11,11 +11,13 @@ POST /api/stduents
 with json body
 ```json
 {
-    "name": "Abid Ali KP",
-    "email": "abid@gmail.com",
+    "first_name": "Abid",
+    "last_name": "Ali",
+    "email": "abidali@gmail.com",
     "roll_number": 1,
     "gender": "m",
-    "percentage": 90.0
+    "gpa": 7.1,
+    "major": 1
 }
 ```
 ### List details of a student
@@ -51,6 +53,12 @@ GET /api/majors
 ```http
 POST /api/majors
 ```
+with json body
+```json
+{
+    "name": "Computer Science"
+}
+```
 
 ### List details of all courses
 ```http
@@ -61,10 +69,33 @@ GET /api/courses
 ```http
 POST /api/courses
 ```
+with json body
+```json
+{
+    "name": "Database Management System"
+}
+```
 
 ### List students enrolled in a course
 ```http
 GET /api/courses/1/students
+```
+
+### Get all student enrollment in courses
+```http
+GET /api/studentcourses
+```
+
+### Enroll a student in a course
+```http
+POST /api/studentcourses
+```
+with json body
+```json
+{
+    "student": 1,
+    "course": 1
+}
 ```
 
 ---
