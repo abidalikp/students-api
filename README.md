@@ -1,6 +1,6 @@
 # Students API
 
-### List all Students
+### List details of all students
 ```http
 GET /api/students
 ```
@@ -18,11 +18,11 @@ with json body
     "percentage": 90.0
 }
 ```
-### List student details
+### List details of a student
 ```http
 GET /api/students/1
 ```
-### Update student detail
+### Update details of a student
 ```http
 PATCH /api/students/1
 ```
@@ -32,10 +32,43 @@ with json body
     "email": "abid@yahoo.com"
 }
 ```
-### Delete student
+### Delete a student
 ```http
 DELETE /api/students/1
 ```
+
+### Get courses enrolled by a student
+```http
+GET /api/students/1/courses
+```
+
+### List details of all majors
+```http
+GET /api/majors
+```
+
+### Create a major
+```http
+POST /api/majors
+```
+
+### List details of all courses
+```http
+GET /api/courses
+```
+
+### Create a course
+```http
+POST /api/courses
+```
+
+### List students enrolled in a course
+```http
+GET /api/courses/1/students
+```
+
+---
+---
 
 # Run Locally
 
@@ -64,10 +97,13 @@ pip install -r requirements.txt
 py manage.py runserver
 ```
 
-6. Go to postman and test-api using the base url:
+6. Test API using the base url:
 ```
 http://localhost:8000
 ```
+
+---
+---
 
 # Status Codes
 
