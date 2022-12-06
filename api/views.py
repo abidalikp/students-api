@@ -38,6 +38,22 @@ class MajorDetailAPI(RetrieveUpdateDestroyAPIView):
     queryset = models.Major.objects.all()
     serializer_class = serializers.MajorSerializer
 
+# Major Students
+class MajorStudentsAPI(ListAPIView):
+    serializer_class = serializers.StudentSerializer
+
+    def get_queryset(self):
+        pk = self.kwargs['pk']
+        return models.Student.objects.filter(major=pk)
+
+# Major Courses
+class MajorCoursesAPI(ListAPIView):
+    serializer_class = serializers.CourseSerializer
+
+    def get_queryset(self):
+        pk = self.kwargs['pk']
+        return models.Course.objects.filter(major=pk)
+
 # Courses
 class CourseAPI(ListCreateAPIView):
     queryset = models.Course.objects.all()
@@ -46,6 +62,14 @@ class CourseAPI(ListCreateAPIView):
 class CourseDetailAPI(RetrieveUpdateDestroyAPIView):
     queryset = models.Course.objects.all()
     serializer_class = serializers.CourseSerializer
+
+# Course students
+class CourseStudentsAPI(ListAPIView):
+    serializer_class = serializers.StudentSerializer
+
+    def get_queryset(self):
+        pk = self.kwargs['pk']
+        return models.Student.objects.filter(students__course=pk)
 
 # Student Course
 class StudentCourseAPI(ListCreateAPIView):
